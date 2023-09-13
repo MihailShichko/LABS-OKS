@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="KOSTYA.png" />
+    <None Remove="png-transparent-smiley-emoticon-thumb-signal-emoji-dank-face-smiley-thumb-signal.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\KOSTYA.png" />
+    <Resource Include="Images\png-transparent-smiley-emoticon-thumb-signal-emoji-dank-face-smiley-thumb-signal.png" />
+    <Resource Include="KOSTYA.png" />
+  </ItemGroup>
+
+</Project>
