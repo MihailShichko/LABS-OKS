@@ -7,10 +7,11 @@
         xmlns:ports="clr-namespace:System.IO.Ports;assembly=System.IO.Ports"
         mc:Ignorable="d"
         Title="ConfigurationWindow" Height="450" Width="800"
-        Icon="D:\ОКС\LAB1\LAB1\Images\tree.ico"
-        Loaded="Window_Loaded">
+        Icon="D:\ОКС\LABS OKS\LAB1\Images\tree.ico"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
     <Grid>
-        <Label Content="Париет порта ввода" HorizontalAlignment="Left" Margin="51,62,0,0" VerticalAlignment="Top" Width="131" Height="31" RenderTransformOrigin="0.38,0.246"/>
+        <Label Content="Input port parity" HorizontalAlignment="Left" Margin="51,62,0,0" VerticalAlignment="Top" Width="131" Height="31" RenderTransformOrigin="0.38,0.246"/>
         <ComboBox Name="InputParity"  HorizontalAlignment="Left" Margin="223,62,0,0" VerticalAlignment="Top" Width="151"  SelectionChanged="InputParity_SelectionChanged">
             <ports:Parity>Even</ports:Parity>
             <ports:Parity>Mark</ports:Parity>
@@ -25,6 +26,6 @@
             <ports:Parity>Odd</ports:Parity>
             <ports:Parity>Space</ports:Parity>
         </ComboBox>
-        <Label Content="Париет порта вывода" HorizontalAlignment="Left" Margin="46,122,0,0" VerticalAlignment="Top" Width="136" Height="31"/>
+        <Label Content="Output port parity" HorizontalAlignment="Left" Margin="46,122,0,0" VerticalAlignment="Top" Width="136" Height="31"/>
     </Grid>
 </Window>

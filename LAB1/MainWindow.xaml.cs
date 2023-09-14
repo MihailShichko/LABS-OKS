@@ -68,43 +68,7 @@ namespace LAB1
         {
             return num % 2 == 0;  
         }
-
-        private SerialPort InitInputPort()
-        {
-            var inputPort = new SerialPort();
-            string[] ports = SerialPort.GetPortNames();
-
-            inputPort.PortName = ports.First(port => !IsEven(Convert.ToInt32(port[^1])) && port != inputPort.PortName);
-
-            try
-            {
-                inputPort.Open();
-            }
-            catch (Exception ex)
-            {
-                hype.Text = "Привет ты второй!!!";
-                inputPort.PortName = ports.First(port => !IsEven(Convert.ToInt32(port[^1])) && port != inputPort.PortName);
-                try
-                {
-                    inputPort.Open();
-                } 
-                catch(Exception)
-                {
-                    var ErrorWindow = new ErrorWindow("There is no available ports");
-                    ErrorWindow.ShowDialog();             
-                }
-            }
-            finally
-            {
-
-                hype.Text += "Твой порт на отправке: " + inputPort.PortName + "\n";
-            }
-
-            inputPort = DefaultPortSettings(inputPort);
-            return inputPort;
-        }
-
-        
+   
         private SerialPort InitPort(Func<string[], SerialPort, string> algprithm)
         {
             var Port = new SerialPort();
@@ -116,16 +80,18 @@ namespace LAB1
             {
                 Port.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                hype.Text = "Привет ты второй!!!";
                 Port.PortName = algprithm(ports, Port);
-                Port.Open();
-            }
-            finally
-            {
-
-                hype.Text += "Твой порт на отправке: " + Port.PortName + "\n";
+                try
+                {
+                    Port.Open();
+                }
+                catch (Exception)
+                {
+                    var ErrorWindow = new ErrorWindow("There is no available ports");
+                    ErrorWindow.ShowDialog();
+                }
             }
 
             Port = DefaultPortSettings(Port);
@@ -141,39 +107,13 @@ namespace LAB1
             port.StopBits = StopBits.One;
             return port;
         }
-
-        private SerialPort InitOutputPort()
-        {
-            var outputPort = new SerialPort();
-            var ports = SerialPort.GetPortNames();
-            try
-            {
-                outputPort.PortName = ports.Last(port => IsEven(Convert.ToInt32(port[^1])));
-                outputPort.Open();
-            }
-            catch(Exception ex)
-            {
-                outputPort.PortName = ports.Last(port => IsEven(Convert.ToInt32(port[^1])) && port != outputPort.PortName);
-                outputPort.Open();
-            }
-            finally
-            {
-                hype.Text += "Твой порт на прослушке: " + outputPort.PortName + "\n";
-            }
-            
-            outputPort = DefaultPortSettings(outputPort);
-
-            return outputPort;
-
-        }
-
         private void Window_Initialized(object sender, EventArgs e)
         {
-            InputPort = InitInputPort();
-            OutputPort = InitOutputPort();
-            //var alg = new PortChoosingAlgorithm();
-            //InputPort = InitPort(alg.InputPortChoosing);
-            //OutputPort = InitPort(alg.OutputPortChoosing);
+            var alg = new PortChoosingAlgorithm();
+            InputPort = InitPort(alg.InputPortChoosing);
+            OutputPort = InitPort(alg.OutputPortChoosing);
+            hype.Text += "Your Input port: " + InputPort.PortName + "\n";
+            hype.Text += "Your Output port: " + OutputPort.PortName + "\n";
 
         }
 

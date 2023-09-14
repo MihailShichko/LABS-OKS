@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:LAB1"
         mc:Ignorable="d"
         Title="ErrorWindow" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Icon="D:\ОКС\LABS OKS\LAB1\Images\tree.ico"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
     <Grid>
         <Label Name="Message"  Content="" HorizontalAlignment="Left" Margin="168,71,0,0" VerticalAlignment="Top" Height="57" Width="142"/>
 

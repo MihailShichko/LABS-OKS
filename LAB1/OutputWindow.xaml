@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:LAB1"
         mc:Ignorable="d"
         Title="ReceiveWindow2" Height="180" Width="800"
-        Icon="D:\ОКС\LAB1\LAB1\Images\tree.ico"
-        Loaded="Window_Loaded">
+        Icon="D:\ОКС\LABS OKS\LAB1\Images\tree.ico"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
     <Grid>
-        <TextBox Name="Message" HorizontalAlignment="Left" Margin="203,38,0,0" TextWrapping="Wrap" Text="Сюда должно что-то прилететь" VerticalAlignment="Top" Width="407" Height="39"/>
-        <Label Content="Принимай братишка" HorizontalAlignment="Left" Margin="47,38,0,0" VerticalAlignment="Top" Height="39" Width="132"/>
-        <TextBlock Name="Note" HorizontalAlignment="Left" Margin="233,102,0,0" TextWrapping="Wrap" Text="Заметка" VerticalAlignment="Top" Width="64"/>
+        <TextBox Name="Message" HorizontalAlignment="Left" Margin="203,38,0,0" TextWrapping="Wrap" Text="Something will be here" VerticalAlignment="Top" Width="407" Height="39"/>
+        <Label Content="Here you can recieve data" HorizontalAlignment="Left" Margin="47,38,0,0" VerticalAlignment="Top" Height="39" Width="151"/>
+        <TextBlock Name="Note" HorizontalAlignment="Left" Margin="233,102,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Width="64"/>
 
     </Grid>
 </Window>

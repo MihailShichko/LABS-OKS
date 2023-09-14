@@ -31,7 +31,7 @@ namespace LAB1
             if(e.Key == Key.Enter)
             {
                 InputPort.WriteLine(Message.Text);
-                Note.Text = "Отправил!";
+                Note.Text = "Sent!";
             }
         }
 

@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:LAB1"
         mc:Ignorable="d"
         Title="StateWindow" Height="275" Width="676"
-        Icon="D:\ОКС\LAB1\LAB1\Images\tree.ico"
-        Loaded="Window_Loaded">
+        Icon="D:\ОКС\LABS OKS\LAB1\Images\tree.ico"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
     <Grid>
         <TextBlock Name="InputInfo" HorizontalAlignment="Left" Margin="36,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="181" Width="240" Background="LightSkyBlue"/>
         <TextBlock Name="OutputInfo" HorizontalAlignment="Left" Margin="400,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="181" Width="240" Background="LightSkyBlue"/>
-        <Label Content="Порт ввода" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="101"/>
-        <Label Content="Порт вывода" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Input port" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label Content="Output port" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" Width="101"/>
     </Grid>
 </Window>
