@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1"
         mc:Ignorable="d"
-        Title="ReceiveWindow2" Height="180" Width="800"
+        Title="ReceiveWindow2" Height="369" Width="800"
         Icon="D:\ОКС\LABS OKS\LAB1\Images\tree.ico"
         Loaded="Window_Loaded"
         ResizeMode="NoResize">
     <Grid>
-        <TextBox Name="Message" HorizontalAlignment="Left" Margin="203,38,0,0" TextWrapping="Wrap" Text="Something will be here" VerticalAlignment="Top" Width="407" Height="39"/>
-        <Label Content="Here you can recieve data" HorizontalAlignment="Left" Margin="47,38,0,0" VerticalAlignment="Top" Height="39" Width="151"/>
-        <TextBlock Name="Note" HorizontalAlignment="Left" Margin="233,102,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top" Width="64"/>
+        <TextBox Name="Message" HorizontalAlignment="Left" Margin="166,28,0,0" TextWrapping="Wrap" Text="Something will be here" VerticalAlignment="Top" Width="251" Height="278"/>
+        <Label Content="Here you can recieve data" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Height="39" Width="151"/>
+        <TextBox x:Name="MessageDestaffed" HorizontalAlignment="Left" Margin="481,28,0,0" TextWrapping="Wrap" Text="Something will be here" VerticalAlignment="Top" Width="251" Height="278"/>
 
     </Grid>
 </Window>

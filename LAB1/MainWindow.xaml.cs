@@ -22,9 +22,9 @@ namespace LAB1
     /// </summary>
     public partial class MainWindow : Window
     {
-
         SerialPort InputPort;
         SerialPort OutputPort;
+        MediaPlayer Player = new MediaPlayer();
         public MainWindow()
         {
             InitializeComponent();
@@ -110,11 +110,20 @@ namespace LAB1
         private void Window_Initialized(object sender, EventArgs e)
         {
             var alg = new PortChoosingAlgorithm();
+            Player.Open(new Uri("D:\\ОКС\\LABS OKS\\LAB1\\Music\\WiseMusic.mp3"));
+            Player.MediaEnded += Player_MediaEnded;
+            Player.Play();
             InputPort = InitPort(alg.InputPortChoosing);
             OutputPort = InitPort(alg.OutputPortChoosing);
             hype.Text += "Your Input port: " + InputPort.PortName + "\n";
             hype.Text += "Your Output port: " + OutputPort.PortName + "\n";
 
+        }
+
+        private void Player_MediaEnded(object? sender, EventArgs e)
+        {
+            Player.Position = TimeSpan.Zero;
+            Player.Play();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

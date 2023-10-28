@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LAB1.Builders;
+using LAB1.Packages;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace LAB1
     public partial class InputWindow : Window
     {
         public SerialPort InputPort { get; set; }
+
+        private PackageBuilder<BasicPackage> _packageBuilder = new PackageBuilder<BasicPackage>();
         public InputWindow()
         {
             InitializeComponent();
@@ -30,7 +34,17 @@ namespace LAB1
         {
             if(e.Key == Key.Enter)
             {
-                InputPort.WriteLine(Message.Text);
+                var packages = _packageBuilder.PackMessage(Message.Text, InputPort.PortName);
+                var stringBuilder = new StringBuilder();
+                foreach(var package in packages)
+                {
+                    stringBuilder.Append(BasicPackage.Flag);
+                    stringBuilder.Append(package.ToString());
+                }
+
+                stringBuilder.Remove(0, 1);
+                
+                InputPort.WriteLine(stringBuilder.ToString());
                 Note.Text = "Sent!";
             }
         }

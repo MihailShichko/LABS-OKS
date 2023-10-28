@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LAB1.Builders;
+using LAB1.Packages;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace LAB1
     public partial class OutputWindow : Window
     {
         public SerialPort OutputPort { get; set; }
+
+        public PackageBuilder<BasicPackage> _packageBuilder = new PackageBuilder<BasicPackage>();
         public OutputWindow()
         {
             InitializeComponent();
@@ -28,7 +32,6 @@ namespace LAB1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Note.Text = OutputPort.PortName;
             OutputPort.DataReceived += RecieveHandler;
         }
 
@@ -37,6 +40,14 @@ namespace LAB1
             string message = string.Empty;
             message = OutputPort.ReadExisting();
             Dispatcher.Invoke(() => Message.Text = message);
+            var packages = _packageBuilder.UnPackMessage(message);
+            var stringBuilder = new StringBuilder();
+            foreach (var package in packages)
+            {
+                stringBuilder.Append("Data:" + package.Data);
+            }
+
+            Dispatcher.Invoke(() => MessageDestaffed.Text = stringBuilder.ToString());
         }
     }
 }
