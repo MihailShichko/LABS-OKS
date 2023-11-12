@@ -35,6 +35,7 @@ namespace LAB1
             var window = new InputWindow();
             window.Owner = this;
             window.InputPort = InputPort;
+            window.OutputPort = OutputPort;
             window.Show();
         }
 
@@ -43,6 +44,7 @@ namespace LAB1
             var window = new OutputWindow();
             window.Owner = this;
             window.OutputPort = OutputPort;
+            window.InputPort = InputPort;
             window.Show();
         }
 

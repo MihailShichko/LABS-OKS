@@ -14,18 +14,19 @@ namespace LAB1.Services
         public string GenerateRandomError(string frame)
         {
             Random rnd = new Random();
-            if(rnd.Next(2) == 2)
-            {
+            //if(rnd.Next(2) == 2)
+            //{
                 int index = rnd.Next(26);
                 char insert = frame[index] == '1' ? '0' : '1';
-                frame.Remove(index, 1);
-                frame.Insert(index, insert.ToString());
-            }
+                frame = frame.Remove(index, 1);
+                frame = frame.Insert(index, insert.ToString());
+                
+            //}
 
             return frame;
         }
 
-        public int calculateXorBit(String cadre)
+        private int calculateXorBit(String cadre)
         {
             StringBuilder result = new StringBuilder(cadre);
             int p = result[0] - 48;
@@ -36,14 +37,14 @@ namespace LAB1.Services
             return p;
         }
 
-        public string insertControlBits(BasicPackage frame)
+        public string insertControlBits(string frame)
         {
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < contorlBitsNum; i++)
             {
-                //StringBuilder stringBuilder = new StringBuilder(frame);
-                //stringBuilder.Insert((int)Math.Pow(2, i) - 1, "0");
-                //frame = stringBuilder.ToString();
+                StringBuilder stringBuilder = new StringBuilder(frame);
+                stringBuilder.Insert((int)Math.Pow(2, i) - 1, "0");
+                frame = stringBuilder.ToString();
                 
             }
 
@@ -52,7 +53,7 @@ namespace LAB1.Services
             return calculateControlBits(result.ToString());
         }
 
-        public string calculateControlBits(string frame)
+        private string calculateControlBits(string frame)
         {
             StringBuilder result = new StringBuilder(frame);
             for (int i = 0; i < contorlBitsNum; i++)
@@ -99,6 +100,36 @@ namespace LAB1.Services
             }
             result.Remove(result.Length - 1, 1);
             return result.ToString();
+        }
+
+        public string CorrectMistakes(string frame)
+        {
+            char[] bits = frame.ToCharArray();
+            int numParityBits = (int)Math.Ceiling(Math.Log(frame.Length + 1, 2));
+            for (int i = 0; i < numParityBits; i++)
+            {
+                int parityBitPosition = (int)Math.Pow(2, i) - 1;
+                int count = 0;
+
+                for (int j = parityBitPosition; j < frame.Length; j += (parityBitPosition + 1) * 2)
+                {
+                    for (int k = j; k < j + parityBitPosition + 1 && k < frame.Length; k++)
+                    {
+                        if (bits[k] == '1')
+                        {
+                            count++;
+                        }
+                    }
+                }
+
+                if (count % 2 != 0)
+                {
+                    bits[parityBitPosition] = (bits[parityBitPosition] == '0') ? '1' : '0';
+                }
+            }
+
+            return new string(bits);
+
         }
 
     }

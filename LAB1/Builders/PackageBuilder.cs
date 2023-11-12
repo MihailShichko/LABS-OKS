@@ -42,7 +42,6 @@ namespace LAB1.Builders
             {
                 T pack = new T();
                 pack.UnPack(package);
-                if (_hammingCodeService.CheckFrame(pack.GetData())) pack.SetData(_hammingCodeService.CorrectFrame(pack.GetData()));
                 list.Add(pack);
             }
 
